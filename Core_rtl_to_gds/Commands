@@ -1,0 +1,9 @@
+sudo sshfs -o allow_other,default_permissions seecs@10.3.215.70:/mnt/cadence_tools/ /mnt/cadence_tools
+sudo mount -v -t nfs -o vers=3 10.3.212.20:/root/cadence/installs /mnt/cadence_tools
+
+
+genus -legacy_ui -f rc_script.tcl
+
+irun -timescale 1ns/10ps core_netlist.v tb.v -v slow_vdd1v0_basicCells.v -access +rwc -define SDF_TEST -mess -gui
+irun -timescale 1ns/10ps core_netlist.v tb.v -v slow_vdd1v0_basicCells.v -access +rwc -mess -gui
+
